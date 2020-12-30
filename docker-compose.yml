@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  eyecloudapp:
+     build: ./package_detection
+     restart: always
+     privileged: true
+     environment:
+             - UDEV=1
+     ports:
+             - 5000:5000
+     cap_add:
+             - SYS_ADMIN

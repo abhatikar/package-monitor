@@ -1,0 +1,34 @@
+{
+  "id": "abhatikar/package_detector_ncc",
+  "accuracy": "1",
+  "description": " ",
+  "inference_time": 0,
+  "license": "",
+  "mean_average_precision_top_1": null,
+  "mean_average_precision_top_5": null,
+  "public": false,
+  "dataset": "",
+  "website_url": "",
+  "model_parameters": {
+    "framework_type": "myriad",
+    "size": [
+      300,
+      300
+    ],
+    "scalefactor": 1,
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "crop": true,
+    "softmax": true,
+    "swaprb": false,
+    "purpose": "ObjectDetection",
+    "config_file": "",
+    "model_file": "package_detector_ncc.blob",
+    "label_file": "label_map.txt",
+    "device": "eyecloud"
+  },
+  "version": 1
+}

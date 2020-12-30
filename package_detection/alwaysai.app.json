@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "start": "python app.py"
+  },
+  "models": {
+    "abhatikar/package_detector_ncc": 1
+  }
+}
