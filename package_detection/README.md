@@ -126,12 +126,12 @@ balena push <app name>
 
 <u><b>*Architecture*</b></u>
 
-![alt text](https://github.com/abhatikar/package-monitor/raw/main/assets/arch.png "Architecture")
+![alt text](https://github.com/abhatikar/package-monitor/raw/main/assets/arch2.png "Architecture")
 
 
 <u><b>*Setup*</b></u>
 
-<img src="https://github.com/abhatikar/package-monitor/raw/main/assets/setup.jpg" width="600" height="600">
+<img src="https://github.com/abhatikar/package-monitor/raw/main/assets/setup2.jpg" width="600" height="600">
 
 Connect your webcam and the NCS2 stick to the Raspberry Pi4 USB 3.0 port. Replace the model in `app.py` with the name of your own model or leave it as default! 
 Follow the [guide](https://www.balena.io/docs/learn/getting-started/raspberrypi4-64/python/) to setup the Raspberry Pi4 to work with Balena platform.
