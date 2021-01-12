@@ -1,13 +1,20 @@
 version: '2.1'
 
 services:
-  eyecloudapp:
-     build: ./package_detection
-     restart: always
-     privileged: true
-     environment:
-             - UDEV=1
-     ports:
+    package-monitor:
+        build:
+            context: package_detection
+            dockerfile: Dockerfile
+        restart: always
+        environment:
+           #Leave the below environment variables commented out
+           #if you dont have NCS stick or EyeCloud camera
+           # - NCS2_CAM=1  #Enable this if you have NCS stick plugged in
+           # - OPENNCC_CAM=1 #Enable this if you have an EyeCloud camera
+            - UDEV=1
+        privileged: true
+        network_mode: host
+        devices:
+            - "/dev:/dev"
+        ports:
              - 5000:5000
-     cap_add:
-             - SYS_ADMIN

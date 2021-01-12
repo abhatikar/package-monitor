@@ -39,7 +39,7 @@ You can find details on working with projects [here](https://alwaysai.co/docs/ge
 
 ![alt text](https://github.com/abhatikar/package-monitor/raw/main/assets/convert.png "Model Conversion")
 
-This app is intended to be run on an OpenNCC camera, therefore the model you have trained has to be converted into the format that makes it optimized to run on the OpenNCC camera. The conversion uses the OpenVino toolkit to achieve this. That way you could use the camera with a embedded microcomputer like raspberry pi without compromising the speed of the model inferences. To convert your model to the EyeCloud optimized format, run:
+If you want to run this app using an OpenNCC camera, you will have to convert the model you have trained into the format that makes it optimized to run on the OpenNCC camera. The conversion uses the OpenVino toolkit to achieve this. That way you could use the camera with a embedded microcomputer like raspberry pi without compromising the speed of the model inferences. To convert your model to the EyeCloud optimized format, run:
 
 ```bash
 aai model convert <input-model-id> --format eyecloud --output_id <output-model-id>
@@ -60,21 +60,113 @@ You can either publish your model and add it to your project using aai app model
 Refer to the AlwaysAI docs to know how you can achieve this using the CLI.
 
 ## Running
-You can run the application in 2 different ways.
+You can run the application in 6 different ways.
 
-#### <b>Use a laptop with the OpenNCC camera</b>
+#### <b>Use a laptop with the USB webcam</b>
 
-Connect your OpenNCC camera to your laptop's USB 3.0 port. Replace the model in `app.py` with the name of your own model that you converted! 
+Connect your Web camera to your laptop's USB port. Replace the models in `app.py` with the name of your own model or leave it as default!
 Next, you copy the Dockerfile template for alwaysai.
 
 Run the project as you would any alwaysAI app! See [our docs pages](https://alwaysai.co/blog/building-and-deploying-apps-on-alwaysai) if you need help running your program.
 
 ```bash
 cp Dockerfile.alwaysai Dockerfile
+cp alwaysai.app.json.usbcam alwaysai.app.json
 aai app configure
 aai app install
 aai app start
 ```
+This will run the app without any acceleration and you will see the inference time is higher
+
+#### <b>Use a laptop with the USB webcam and NCS2 stick</b>
+
+Connect your webcam camera to your laptop's USB port.Connect the NCS2 stick to the laptop's USB 3.0 port. Replace the models in `app.py` with the name of your own model or leave it as default! 
+Next, you copy the Dockerfile template for alwaysai.
+
+Run the project as you would any alwaysAI app! See [our docs pages](https://alwaysai.co/blog/building-and-deploying-apps-on-alwaysai) if you need help running your program.
+
+```bash
+export NCS2_CAM=1
+cp Dockerfile.alwaysai Dockerfile
+cp alwaysai.app.json.usbcam alwaysai.app.json
+aai app configure
+aai app install
+aai app start
+```
+
+#### <b>Use a laptop with the OpenNCC camera</b>
+
+Connect your OpenNCC camera to your laptop's USB 3.0 port. Replace the models in `app.py` with the name of your own model which you converted 
+or leave it as default! 
+Next, you copy the Dockerfile template for alwaysai.
+
+Run the project as you would any alwaysAI app! See [our docs pages](https://alwaysai.co/blog/building-and-deploying-apps-on-alwaysai) if you need help running your program.
+
+```bash
+export OpenNCC=1
+cp Dockerfile.alwaysai Dockerfile
+cp alwaysai.app.json.eyecloud alwaysai.app.json
+aai app configure
+aai app install
+aai app start
+```
+
+#### <b>Use a Raspberry Pi4 with the USB webcam</b>
+<p>
+
+Connect your webcam to the Raspberry Pi4 USB 3.0 port. Replace the models in `app.py` with the name of your own model or leave it as default! 
+Follow the [guide](https://www.balena.io/docs/learn/getting-started/raspberrypi4-64/python/) to setup the Raspberry Pi4 to work with Balena platform.
+Next, you copy the Dockerfile template for Balena and run the balena cli commands as shown below from the top level directory
+
+```bash
+cp Dockerfile.balena Dockerfile
+cp alwaysai.app.json.usbcam alwaysai.app.json
+cd <directory which has docker-compose.yml>
+balena push <app name>
+```
+
+#### <b>Use a Raspberry Pi4 with the USB webcam and NCS2 stick</b>
+<p>
+
+<u><b>*Architecture*</b></u>
+
+![alt text](https://github.com/abhatikar/package-monitor/raw/main/assets/arch2.png "Architecture")
+
+
+<u><b>*Setup*</b></u>
+
+<img src="https://github.com/abhatikar/package-monitor/raw/main/assets/setup2.jpg" width="600" height="600">
+
+Connect your webcam and the NCS2 stick to the Raspberry Pi4 USB 3.0 port. Replace the model in `app.py` with the name of your own model or leave it as default! 
+Follow the [guide](https://www.balena.io/docs/learn/getting-started/raspberrypi4-64/python/) to setup the Raspberry Pi4 to work with Balena platform.
+Next, you copy the Dockerfile template for Balena and run the balena cli commands as shown below from the top level directory
+Uncomment the line to enable the NCS2 with USB webcam in the `docker-compose.yaml`
+
+`#- NCS2_CAM=1  #Enable this if you have NCS stick plugged in`
+
+```bash
+cp Dockerfile.balena Dockerfile
+cp alwaysai.app.json.usbcam alwaysai.app.json
+cd <directory which has docker-compose.yml>
+balena push <app name>
+```
+#### Example Output
+
+```bash
+
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] Engine: Engine.DNN_OPENVINO
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] Accelerator: Accelerator.MYRIAD
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor]
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] Model:
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] abhatikar/package_detector
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor]
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] Labels:
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] ['???', 'package']
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor]
+[Logs]    [1/12/2021, 11:16:32 PM] [package-monitor] [INFO] Streamer started at http://localhost:5000
+
+```
+
 
 #### <b>Use a Raspberry Pi4 with the OpenNCC camera</b>
 <p>
@@ -88,12 +180,16 @@ aai app start
 
 <img src="https://github.com/abhatikar/package-monitor/raw/main/assets/setup.jpg" width="600" height="600">
 
-Connect your OpenNCC camera to the Raspberry Pi4 USB 3.0 port. Replace the model in `app.py` with the name of your own model which you converted! 
+Connect your OpenNCC camera to the Raspberry Pi4 USB 3.0 port. Replace the models in `app.py` with the name of your own model which you converted! 
 Follow the [guide](https://www.balena.io/docs/learn/getting-started/raspberrypi4-64/python/) to setup the Raspberry Pi4 to work with Balena platform.
 Next, you copy the Dockerfile template for Balena and run the balena cli commands as shown below from the top level directory
+Uncomment the line to enable the NCS2 with USB webcam in the `docker-compose.yaml`
+
+`# - OPENNCC_CAM=1 #Enable this if you have an EyeCloud camera`
 
 ```bash
 cp Dockerfile.balena Dockerfile
+cp alwaysai.app.json.eyecloud alwaysai.app.json
 cd <directory which has docker-compose.yml>
 balena push <app name>
 ```

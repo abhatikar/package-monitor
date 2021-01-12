@@ -1,12 +1,12 @@
 FROM alwaysai/edgeiq:eyecloud-armv7hf-latest
 
+RUN apt update && apt install usbutils vim
+
 # Defines our working directory in container
 WORKDIR /usr/src/app
 
-# Copies the package.json first for better cache on later pushes
-COPY . /usr/src/app/
+COPY . .
 
 RUN pip install -r requirements.txt
 
 CMD ["python", "app.py"]
-
