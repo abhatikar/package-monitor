@@ -138,9 +138,7 @@ Follow the [guide](https://www.balena.io/docs/learn/getting-started/raspberrypi4
 Next, you copy the Dockerfile template for Balena and run the balena cli commands as shown below from the top level directory
 Uncomment the line to enable the NCS2 with USB webcam in the `docker-compose.yaml`
 
-```bash
-           #- NCS2_CAM=1  #Enable this if you have NCS stick plugged in
-```
+`#- NCS2_CAM=1  #Enable this if you have NCS stick plugged in`
 
 ```bash
 cp Dockerfile.balena Dockerfile
