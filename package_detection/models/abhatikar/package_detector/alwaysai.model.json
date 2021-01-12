@@ -1,0 +1,33 @@
+{
+  "id": "abhatikar/package_detector",
+  "accuracy": "1",
+  "description": " ",
+  "inference_time": 0,
+  "license": "",
+  "mean_average_precision_top_1": null,
+  "mean_average_precision_top_5": null,
+  "public": false,
+  "dataset": "",
+  "website_url": "",
+  "model_parameters": {
+    "framework_type": "tensorflow",
+    "size": [
+      300,
+      300
+    ],
+    "scalefactor": 1,
+    "mean": [
+      0,
+      0,
+      0
+    ],
+    "crop": true,
+    "softmax": true,
+    "swaprb": false,
+    "purpose": "ObjectDetection",
+    "config_file": "config.pbtxt",
+    "model_file": "model.pb",
+    "label_file": "label_map.txt"
+  },
+  "version": 2
+}
