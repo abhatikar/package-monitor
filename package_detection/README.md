@@ -111,15 +111,6 @@ aai app start
 #### <b>Use a Raspberry Pi4 with the USB webcam</b>
 <p>
 
-<u><b>*Architecture*</b></u>
-
-![alt text](https://github.com/abhatikar/package-monitor/raw/main/assets/arch.png "Architecture")
-
-
-<u><b>*Setup*</b></u>
-
-<img src="https://github.com/abhatikar/package-monitor/raw/main/assets/setup.jpg" width="600" height="600">
-
 Connect your webcam to the Raspberry Pi4 USB 3.0 port. Replace the models in `app.py` with the name of your own model or leave it as default! 
 Follow the [guide](https://www.balena.io/docs/learn/getting-started/raspberrypi4-64/python/) to setup the Raspberry Pi4 to work with Balena platform.
 Next, you copy the Dockerfile template for Balena and run the balena cli commands as shown below from the top level directory
@@ -129,7 +120,6 @@ cp Dockerfile.balena Dockerfile
 cd <directory which has docker-compose.yml>
 balena push <app name>
 ```
-
 
 #### <b>Use a Raspberry Pi4 with the USB webcam and NCS2 stick</b>
 <p>
