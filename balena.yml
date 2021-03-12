@@ -1,0 +1,19 @@
+name: package-monitor
+type: sw.application
+description: >-
+  Create a AI-driven package detector using AlwaysAI and balenaCloud.
+assets:
+  repository:
+    type: blob.asset
+    data:
+      url: 'https://github.com/abhatikar/package-monitor'
+  logo:
+    type: blob.asset
+    data:
+      url: >-
+        https://raw.githubusercontent.com/abhatikar/package-monitor/main/logo.png
+data:
+  applicationEnvironmentVariables:
+  defaultDeviceType: raspberrypi4-64
+  supportedDeviceTypes:
+version: 
