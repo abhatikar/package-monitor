@@ -1,4 +1,4 @@
-FROM alwaysai/edgeiq:eyecloud-armv7hf-latest
+FROM alwaysai/edgeiq:eyecloud-armv7hf-0.17.1
 
 RUN apt update && apt install usbutils vim
 
